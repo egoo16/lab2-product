@@ -1,0 +1,20 @@
+version: '3.9'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    env_file: ./api/.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+  batch:
+    build:
+      context: .
+      dockerfile: ./batch/Dockerfile
+    env_file: ./batch/.env
+    volumes:
+      - ./data:/data
+volumes:
+  data:
